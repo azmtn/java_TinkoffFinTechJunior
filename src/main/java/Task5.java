@@ -17,6 +17,7 @@ public class Task5 {
         for (int i = slidingLengths.length - 1; i >= 0; --i) {
             slidingLengths[i] = scanner.nextInt();
         }
+        scanner.close();
 
         int step = 0;
         jumpsNumber[0] = 0;
