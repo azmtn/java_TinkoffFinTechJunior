@@ -18,13 +18,35 @@ public class Task5 {
             slidingLengths[i] = scanner.nextInt();
         }
 
-        System.out.println(Arrays.toString(jumpLengths));
-        System.out.println(Arrays.toString(slidingLengths));
-
         int step = 0;
-        while (jumpsNumber[n] == -1) {
+        jumpsNumber[0] = 0;
+        while (true) {
+            int count = 0;
+            for (int i = 0; i < n; i++) {
+                if (jumpsNumber[i] == step) {
+                    count++;
+                    int temp = i + jumpLengths[i];
+                    if (temp >= n)
+                    {
+                        System.out.println(step + 1);
+                        return;
+                    }
+                    else {
+                        while (temp > 0) {
+                            int temp1 = temp - slidingLengths[temp];
+                            if (jumpsNumber[temp1] == -1) {
+                                jumpsNumber[temp1] = step + 1;
+                            }
+                            temp--;
+                        }
+                    }
+                }
+            }
+            if (count == 0) {
+                System.out.println(-1);
+                return;
+            }
+            step++;
         }
-
-        System.out.println(Arrays.toString(jumpsNumber));
     }
 }
